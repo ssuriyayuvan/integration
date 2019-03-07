@@ -77,6 +77,9 @@ function HTTPRequest(
 	}
 	console.log(request_options)
 	fetch(completeURL, request_options).then((res) => {
+		if (!res.ok) {
+			throw new Error(`mymonero server returned error code ${res.status} for ${endpointPath}`)
+		}
 		return res.json()
 	}).then(body => {
 		fn(null, body)
