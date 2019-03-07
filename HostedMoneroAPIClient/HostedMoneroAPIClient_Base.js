@@ -436,6 +436,7 @@ class HostedMoneroAPIClient_Base
 		fn // (err?) -> RequestHandle
 	)
 	{
+		console.info('SEND', serializedSignedTx)
 		const self = this
 		// just a debug feature:
 		if (self.context.HostedMoneroAPIClient_DEBUGONLY_mockSendTransactionSuccess === true) {

@@ -482,6 +482,7 @@ class MyMoneroCoreBridge
 			is_sweeping: "" + is_sweeping, // bool -> string
 			priority: "" + priority,
 			fee_per_b: fee_per_b.toString(),
+			fee_mask: 10000,
 			unspent_outs: sanitary__unspent_outputs // outs, not outputs
 		};
 		if (typeof optl__payment_id_string !== "undefined" && optl__payment_id_string && optl__payment_id_string != "") {
@@ -588,6 +589,7 @@ class MyMoneroCoreBridge
 			fee_amount: fee_amount.toString(),
 			priority: "" + priority,
 			fee_per_b: fee_per_b.toString(),
+			fee_mask: 10000,
 			using_outs: sanitary__using_outs,
 			mix_outs: sanitary__mix_outs,
 			unlock_time: "" + unlock_time, // bridge is expecting a string
