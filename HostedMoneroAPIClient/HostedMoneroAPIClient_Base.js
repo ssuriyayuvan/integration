@@ -81,6 +81,7 @@ class HostedMoneroAPIClient_Base
 		const self = this
 		const endpointPath = "login"
 		const parameters = net_service_utils.New_ParametersForWalletRequest(address, view_key__private)
+		parameters.api_key = this.options.apiKey
 		parameters.create_account = true
 		parameters.generated_locally = generated_locally
 		const requestHandle = net_service_utils.HTTPRequest(
@@ -121,6 +122,7 @@ class HostedMoneroAPIClient_Base
 		const self = this
 		const endpointPath = "get_address_info"
 		const parameters = net_service_utils.New_ParametersForWalletRequest(address, view_key__private)
+		parameters.api_key = this.options.apiKey
 		const requestHandle = net_service_utils.HTTPRequest(
 			self.fetch,
 			self._new_apiAddress_authority(),
@@ -204,6 +206,7 @@ class HostedMoneroAPIClient_Base
 		const self = this
 		const endpointPath = "get_address_txs"
 		const parameters = net_service_utils.New_ParametersForWalletRequest(address, view_key__private)
+		parameters.api_key = this.options.apiKey
 		const requestHandle = net_service_utils.HTTPRequest(
 			self.fetch,
 			self._new_apiAddress_authority(),
@@ -268,6 +271,7 @@ class HostedMoneroAPIClient_Base
 		const self = this
 		const endpointPath = "import_wallet_request"
 		const parameters = net_service_utils.New_ParametersForWalletRequest(address, view_key__private)
+		parameters.api_key = this.options.apiKey
 		net_service_utils.AddUserAgentParamters(
 			parameters,
 			self.appUserAgent_product, 
@@ -320,6 +324,7 @@ class HostedMoneroAPIClient_Base
 		//
 		const endpointPath = 'get_unspent_outs'
 		const parameters = net_service_utils.New_ParametersForWalletRequest(address, view_key__private)
+		parameters.api_key = this.options.apiKey
 		parameters.amount = '0'
 		parameters.mixin = mixinNumber
 		parameters.use_dust = true // Client now filters unmixable by dustthreshold amount (unless sweeping) + non-rct 
@@ -451,6 +456,7 @@ class HostedMoneroAPIClient_Base
 		// actual implementation:
 		const endpointPath = 'submit_raw_tx'
 		const parameters = net_service_utils.New_ParametersForWalletRequest(address, view_key__private)
+		parameters.api_key = this.options.apiKey
 		parameters.tx = serializedSignedTx
 		net_service_utils.AddUserAgentParamters(
 			parameters,

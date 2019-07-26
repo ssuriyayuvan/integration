@@ -12,11 +12,11 @@ const MAINNET = nettypeUtils.network_type.MAINNET
 export type MyMoneroApiOptions = {
     appUserAgentProduct: string,
     appUserAgentVersion: string,
+    apiKey: string,
     apiServer: string,
     fetch: Function,
     request: Function,
     randomBytes: Function,
-    apiKey?: string,
 }
 
 export type MyMoneroWallet = {
@@ -74,6 +74,7 @@ class MyMoneroApi {
         this.hostedMoneroAPIClient = new HostedMoneroAPIClient({
             fetch: options.fetch,
             // request_conformant_module: options.request,
+            apiKey: options.apiKey,
             apiServer: options.apiServer,
             appUserAgent_product: 'agent-product',
             appUserAgent_version: '0.0.1',
@@ -113,6 +114,7 @@ class MyMoneroApi {
 
     async getTransactions (queryParams: QueryParams): Promise<Array<Object>> {
         const params = {
+            api_key: this.options.apiKey,
             address: queryParams.moneroAddress,
             view_key: queryParams.moneroViewKeyPrivate,
             create_account: true    
@@ -133,6 +135,7 @@ class MyMoneroApi {
 
     async getAddressInfo (queryParams: QueryParams): Promise<BalanceResults> {
         const params = {
+            api_key: this.options.apiKey,
             address: queryParams.moneroAddress,
             view_key: queryParams.moneroViewKeyPrivate,
             create_account: true    
