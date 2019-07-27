@@ -460,6 +460,7 @@ async function Parsed_UnspentOuts__async(
 	const returnValuesByKey = {
 		unspentOutputs: finalized_unspentOutputs,
 		per_byte_fee__string: final__per_byte_fee__string, // String
+		fee_mask: data.fee_mask != null ? Number(data.fee_mask) : 10000
 	};
 	return returnValuesByKey;
 }

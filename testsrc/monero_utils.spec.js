@@ -96,10 +96,12 @@ describe("cryptonote_utils tests", async function() {
 			}
 		]
 		const fee_per_b = "24658"
+		const fee_mask = "10000"
 		const step1_retVals = await monero_utils.send_step1__prepare_params_for_get_decoys(
 			false, // sweeping
 			"200000000", // sending_amount
 			fee_per_b, // fee_per_b,
+			fee_mask,
 			1, // priority,
 			unspent_outputs,
 			null,// optl__payment_id_string, // this may be nil
@@ -167,6 +169,7 @@ describe("cryptonote_utils tests", async function() {
 			null, // payment_id,
 			1, // priority,
 			fee_per_b, // fee_per_b,
+			fee_mask,
 			0, // unlock_time,
 			nettype // nettype
 		)

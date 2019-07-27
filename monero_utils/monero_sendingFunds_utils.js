@@ -162,6 +162,7 @@ function SendFunds( // TODO: migrate this to take a map of args
 		//
 		preSuccess_nonTerminal_statusUpdate_fn(SendFunds_ProcessStep_Code.fetchingLatestBalance);
 		var fee_per_b__string;
+		var fee_mask = 10000; // This comes from the get_unspent_outs API
 		var unspent_outs; 
 		hostedMoneroAPIClient.UnspentOuts(
 			wallet__public_address,
@@ -170,12 +171,13 @@ function SendFunds( // TODO: migrate this to take a map of args
 			wallet__private_keys.spend,
 			mixin,
 			sweeping,
-			async function(err, returned_unusedOuts, per_byte_fee__string)
+			async function(err, returned_unusedOuts, per_byte_fee__string, server_fee_mask)
 			{
 				if (err) {
 					__trampolineFor_err_withErr(err);
 					return;
 				}
+				fee_mask = server_fee_mask;
 				console.log("Received dynamic per kb fee", monero_amount_format_utils.formatMoneySymbol(new JSBigInt(per_byte_fee__string)));
 				{ // save some values for re-enterable function
 					unspent_outs = returned_unusedOuts; // TODO: which one should be used? delete the other
@@ -197,6 +199,7 @@ function SendFunds( // TODO: migrate this to take a map of args
 					sweeping,
 					sending_amount.toString(), // must be a string
 					fee_per_b__string,
+					fee_mask,
 					simple_priority,
 					unspent_outs,
 					payment_id, // may be nil
@@ -250,6 +253,7 @@ function SendFunds( // TODO: migrate this to take a map of args
 						payment_id, 
 						simple_priority,
 						fee_per_b__string,
+						fee_mask,
 						0, // unlock time
 						nettype
 					);

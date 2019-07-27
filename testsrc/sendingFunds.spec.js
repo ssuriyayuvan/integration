@@ -92,7 +92,8 @@ class APIClient
 					fn(
 						err, // no error
 						returnValuesByKey.unspentOutputs,
-						returnValuesByKey.per_byte_fee__string
+						returnValuesByKey.per_byte_fee__string,
+						returnValuesByKey.fee_mask
 					)
 				}
 			)

@@ -368,7 +368,8 @@ class HostedMoneroAPIClient_Base
 					fn(
 						err, // no error
 						returnValuesByKey.unspentOutputs, // TODO: remove this
-						returnValuesByKey.per_byte_fee__string
+						returnValuesByKey.per_byte_fee__string,
+						returnValuesByKey.fee_mask
 					)
 				}
 			)
