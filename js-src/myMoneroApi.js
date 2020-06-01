@@ -205,7 +205,7 @@ class MyMoneroApi {
                     // final__payment_id,
                     txid: tx_hash,
                     networkFee: tx_fee.toString(),
-                    // tx_key,
+                    tx_key,
                     mixin    
                 }
                 resolve(out)
