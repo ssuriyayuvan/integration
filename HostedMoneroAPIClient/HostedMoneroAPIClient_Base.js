@@ -32,7 +32,7 @@
 const JSBigInt = require('../cryptonote_utils/biginteger.js').BigInteger // important: grab defined export
 const monero_config = require('../monero_utils/monero_config.js')
 const net_service_utils = require('../hostAPI/net_service_utils.js')
-const apiServer = "https://api.mymonero.com:8443"
+const apiServer = "https://walapi.beldex.io"
 //
 class HostedMoneroAPIClient_Base
 {
