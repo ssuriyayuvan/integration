@@ -12,7 +12,7 @@ const mainAsync = async () => {
     const options = {
         appUserAgentProduct: 'tester',
         appUserAgentVersion: '0.0.1',
-        apiServer: 'https://api.mymonero.com:8443',
+        apiServer: 'https://api.integration.com:8443',
         fetch,
         request,
         randomBytes
